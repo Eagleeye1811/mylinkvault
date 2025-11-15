@@ -28,8 +28,8 @@ export const LinkCard = ({ link, onDelete }: LinkCardProps) => {
   };
 
   return (
-    <Card className="group p-5 hover:shadow-lg transition-all duration-300 border-border bg-card">
-      <div className="flex items-start justify-between gap-3">
+    <Card className="group p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-border bg-card animate-fade-in hover:border-primary/20 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:to-accent/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity">
+      <div className="flex items-start justify-between gap-3 relative z-10">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             {getFaviconUrl(link.url) && (
@@ -55,9 +55,9 @@ export const LinkCard = ({ link, onDelete }: LinkCardProps) => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-primary hover:underline truncate flex items-center gap-1 max-w-[200px]"
+              className="text-xs text-primary hover:underline truncate flex items-center gap-1 max-w-[200px] transition-all duration-200 hover:gap-2"
             >
-              <ExternalLink className="w-3 h-3 flex-shrink-0" />
+              <ExternalLink className="w-3 h-3 flex-shrink-0 transition-transform group-hover:scale-110" />
               <span className="truncate">{link.url}</span>
             </a>
           </div>

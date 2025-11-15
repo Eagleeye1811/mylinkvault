@@ -78,8 +78,8 @@ export const AddLinkDialog = ({ onAdd }: AddLinkDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="lg" className="gap-2 shadow-lg">
-          <Plus className="w-5 h-5" />
+        <Button size="lg" className="gap-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary">
+          <Plus className="w-5 h-5 transition-transform group-hover:rotate-90" />
           Add Link
         </Button>
       </DialogTrigger>
