@@ -15,9 +15,10 @@ export interface Link {
 interface LinkCardProps {
   link: Link;
   onDelete: (id: string) => void;
+  onClick: () => void;
 }
 
-export const LinkCard = ({ link, onDelete }: LinkCardProps) => {
+export const LinkCard = ({ link, onDelete, onClick }: LinkCardProps) => {
   const getFaviconUrl = (url: string) => {
     try {
       const domain = new URL(url).hostname;
@@ -28,7 +29,10 @@ export const LinkCard = ({ link, onDelete }: LinkCardProps) => {
   };
 
   return (
-    <Card className="group p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-border bg-card animate-fade-in hover:border-primary/20 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:to-accent/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity">
+    <Card 
+      className="group p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-border bg-card animate-fade-in hover:border-primary/20 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:to-accent/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity cursor-pointer"
+      onClick={onClick}
+    >
       <div className="flex items-start justify-between gap-3 relative z-10">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
@@ -65,7 +69,10 @@ export const LinkCard = ({ link, onDelete }: LinkCardProps) => {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => onDelete(link.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(link.id);
+          }}
           className="opacity-0 group-hover:opacity-100 transition-opacity text-destructive hover:text-destructive hover:bg-destructive/10"
         >
           <Trash2 className="w-4 h-4" />
