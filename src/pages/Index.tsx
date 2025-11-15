@@ -3,6 +3,7 @@ import { Search, Link as LinkIcon, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LinkCard, Link } from "@/components/LinkCard";
 import { AddLinkDialog } from "@/components/AddLinkDialog";
+import { LinkDetailDialog } from "@/components/LinkDetailDialog";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import logoImage from "@/assets/logo.png";
@@ -13,6 +14,8 @@ const Index = () => {
   const [links, setLinks] = useState<Link[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedLink, setSelectedLink] = useState<Link | null>(null);
+  const [isDetailDialogOpen, setIsDetailDialogOpen] = useState(false);
 
   useEffect(() => {
     const savedLinks = localStorage.getItem(STORAGE_KEY);
@@ -42,7 +45,20 @@ const Index = () => {
 
   const handleDeleteLink = (id: string) => {
     saveLinks(links.filter((link) => link.id !== id));
+    setIsDetailDialogOpen(false);
     toast.success("Link deleted");
+  };
+
+  const handleUpdateLink = (id: string, updates: Partial<Link>) => {
+    const updatedLinks = links.map((link) =>
+      link.id === id ? { ...link, ...updates } : link
+    );
+    saveLinks(updatedLinks);
+  };
+
+  const handleLinkClick = (link: Link) => {
+    setSelectedLink(link);
+    setIsDetailDialogOpen(true);
   };
 
   const categories = Array.from(new Set(links.map((link) => link.category)));
@@ -146,10 +162,23 @@ const Index = () => {
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <LinkCard link={link} onDelete={handleDeleteLink} />
+                <LinkCard 
+                  link={link} 
+                  onDelete={handleDeleteLink}
+                  onClick={() => handleLinkClick(link)}
+                />
               </div>
             ))}
           </div>
+        )}
+
+        {selectedLink && (
+          <LinkDetailDialog
+            link={selectedLink}
+            open={isDetailDialogOpen}
+            onOpenChange={setIsDetailDialogOpen}
+            onUpdate={handleUpdateLink}
+          />
         )}
       </div>
     </div>
