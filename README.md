@@ -1,6 +1,8 @@
 # MyLinkVault 🔐
 
-A simple, self-hosted web application to save, organize, and quickly access all your frequently used links and "watch later" items.
+A simple, modern web application to save, organize, and quickly access all your frequently used links and "watch later" items.
+
+🌐 **Live Demo:** [https://mylinkvault.lovable.app/](https://mylinkvault.lovable.app/)
 
 ## 💡 The Problem
 
@@ -8,7 +10,7 @@ I found myself scattering links, bookmarks, and videos I wanted to watch later a
 
 ## ✨ The Solution
 
-**MyLinkVault** is my personal solution to this problem. It's a central, self-hosted website where I can:
+**MyLinkVault** is my personal solution to this problem. It's a central website where I can:
 
 * **Store Frequent Links:** Keep all my commonly used links (work tools, favorite sites, documentation) in one place.
 * **Build a "Watch Later" Queue:** Save articles, videos, and other media to consume later without cluttering my bookmarks.
@@ -18,62 +20,56 @@ I found myself scattering links, bookmarks, and videos I wanted to watch later a
 
 * **Add New Links:** A simple form to add a new URL, a descriptive title, and notes.
 * **Categorization:** Easily distinguish between "Frequent Links" and "Watch Later" items.
-* **Search/Filter:** (Add this if you've built it) Quickly find the link you're looking for.
 * **One-Click Access:** Open saved links directly from the dashboard.
 * **Edit & Delete:** Easily manage your saved links.
+* **Modern UI:** Beautiful, responsive interface with dark mode support.
 
 ## 💻 Tech Stack
 
-This project was built using:
+This project was built using modern web technologies:
 
-* **Frontend:** [e.g., HTML, CSS, JavaScript, or a framework like React/Vue]
-* **Backend:** [e.g., PHP/Laravel, Node.js/Express, Python/Django]
-* **Database:** [e.g., MySQL, PostgreSQL, SQLite]
-
-*(You mentioned creating this "through loveable" - if that's a typo for **Laravel**, you'd put `PHP/Laravel` in the backend section!)*
+* **Frontend Framework:** React 18.3.1 with TypeScript 5.8.3
+* **Build Tool:** Vite 5.4.19
+* **UI Components:** shadcn/ui (built on Radix UI primitives)
+* **Styling:** Tailwind CSS 3.4.17
+* **State Management:** TanStack Query (React Query) 5.83.0
+* **Routing:** React Router DOM 6.30.1
+* **Form Validation:** React Hook Form with Zod schema validation
+* **Icons:** Lucide React
+* **Theme System:** next-themes (dark mode support)
+* **Deployment Platform:** Lovable
 
 ## 🛠️ Setup & Installation
 
-This project is primarily for my personal use. To set it up locally or on a new server:
+To set it up locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/](https://github.com/)[your-username]/mylinkvault.git
+    git clone https://github.com/[your-username]/mylinkvault.git
     cd mylinkvault
     ```
 
 2.  **Install Dependencies:**
-    *(Add your dependency installation command here)*
     ```bash
-    # Example for Node.js
     npm install
-    
-    # Example for PHP/Composer (Laravel)
-    composer install
     ```
 
-3.  **Environment Configuration:**
-    * Copy the example environment file: `cp .env.example .env`
-    * Edit the `.env` file to set up your database credentials (`DB_HOST`, `DB_USERNAME`, `DB_PASSWORD`, etc.) and application key.
-
-4.  **Database Migration:**
-    *(Add your database migration command here)*
+3.  **Run the Development Server:**
     ```bash
-    # Example for Laravel
-    php artisan migrate
+    npm run dev
     ```
 
-5.  **Run the Application:**
-    *(Add your command to start the server)*
-    ```bash
-    # Example for Node.js
-    npm start
-    
-    # Example for Laravel
-    php artisan serve
-    ```
+4.  Open your browser and navigate to `http://localhost:8080`
 
-6.  Open your browser and navigate to `http://localhost:[your-port]` (e.g., `http://localhost:3000` or `http://localhost:8000`).
+## 📦 Build for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The optimized files will be generated in the `dist` directory.
 
 ## 🔮 Future Ideas
 
@@ -82,11 +78,13 @@ While the main problem is solved, here are some features I might add in the futu
 * [ ] Add browser extensions (Chrome/Firefox) to save links in one click.
 * [ ] Auto-fetch website titles and favicons when a link is added.
 * [ ] Add tagging support for better organization.
-* [ ] Create user authentication (if I ever want to share it).
+* [ ] Export/import functionality for backup and migration.
+* [ ] Link sharing capabilities with generated share links.
 
 ## 📄 License
 
 This is a personal project. Feel free to fork it, but it's provided as-is.
 
 ---
-Created by [Your Name]
+
+Built with ❤️ using React and TypeScript
